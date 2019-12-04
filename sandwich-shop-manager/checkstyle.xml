@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.2//EN" "http://www.puppycrawl.com/dtds/configuration_1_2.dtd">
+<module name="Checker">
+    <module name="Header">
+        <property name="header" value="//Veronica Pederiva 1161493" />
+        <property name="fileExtensions" value="java" />
+    </module>
+    <module name="TreeWalker">
+        <module name="BooleanExpressionComplexity">
+         <property name="max" value="7"/>
+        </module>
+        <module name="CyclomaticComplexity">
+        </module>
+        <module name="MethodLength">
+        </module>
+        <module name="EmptyCatchBlock">
+        </module>
+        <module name="AvoidStarImport">
+        </module>
+        <module name="IllegalImport">
+        </module>
+        <module name="NeedBraces">
+        </module>
+    </module>
+    <module name="FileLength">
+    </module>
+    <module name="LineLength">
+    </module>
+    <module name="FileTabCharacter">
+    </module>
+</module>
