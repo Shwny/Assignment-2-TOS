@@ -2,7 +2,7 @@
 <!DOCTYPE module PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.2//EN" "http://www.puppycrawl.com/dtds/configuration_1_2.dtd">
 <module name="Checker">
     <module name="Header">
-        <property name="header" value="//Veronica Pederiva 1161493" />
+        <property name="header" value="//Giacomo Bulbarelli 1144046" />
         <property name="fileExtensions" value="java" />
     </module>
     <module name="TreeWalker">
