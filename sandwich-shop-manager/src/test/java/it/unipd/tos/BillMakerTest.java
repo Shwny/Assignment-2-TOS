@@ -46,4 +46,26 @@ public class BillMakerTest {
         }
         assertEquals(tp, 25, 1E-100);
     }
+
+    @Test
+    public void TestScontoPaninieFritti() {
+        List<MenuItem> i = new ArrayList<>();
+        for(int count=0; count < 5; count++){
+            i.add(new MenuItem(MenuItem.itemType.FRITTI, "FRITTO MISTO", 10));
+        }
+
+        i.add(new MenuItem(MenuItem.itemType.PANINI, "CHEESEBURGER", 5));
+
+        i.add(new MenuItem(MenuItem.itemType.BEVANDE, "COLA COLA", 2.50));
+
+        BillMaker make = new BillMaker();
+        double tp = 0;
+
+        try {
+            tp = make.getOrderPrice(i);
+        } catch (TakeAwayBillException error) {
+            System.out.println("Error");
+        }
+        assertEquals(tp, 51.75, 1E-100);
+    }
 }

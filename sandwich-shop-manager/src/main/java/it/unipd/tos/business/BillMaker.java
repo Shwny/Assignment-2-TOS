@@ -20,6 +20,21 @@ public class BillMaker implements TakeAwayBill {
                     .mapToDouble(MenuItem::getPrice).min().getAsDouble();
         }
 
+        double pricePanini = 0;
+        double priceFritti = 0;
+
+        pricePanini += itemsOrdered
+                .stream().filter(x -> x.getType() == MenuItem.itemType.PANINI)
+                .map(MenuItem::getPrice).reduce(0.0, Double::sum);
+
+        priceFritti += itemsOrdered
+                .stream().filter(x -> x.getType() == MenuItem.itemType.FRITTI)
+                .map(MenuItem::getPrice).reduce(0.0, Double::sum);
+
+        if(priceFritti+pricePanini > 50){
+            totalPrice -= 0.1*totalPrice;
+        }
+
         return totalPrice;
     }
 
