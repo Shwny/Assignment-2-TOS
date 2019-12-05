@@ -12,6 +12,10 @@ public class BillMaker implements TakeAwayBill {
 
         double totalPrice=0;
 
+        if(itemsOrdered.size() > 30){
+            throw new TakeAwayBillException("Effettuato ordine troppo grande");
+        }
+
         totalPrice = itemsOrdered.stream().mapToDouble(MenuItem::getPrice).sum();
 
         if(itemsOrdered.stream().filter(x -> x.getType() == MenuItem.itemType.PANINI).count() > 5){

@@ -68,4 +68,15 @@ public class BillMakerTest {
         }
         assertEquals(tp, 51.75, 1E-100);
     }
+
+    @Test(expected = TakeAwayBillException.class)
+    public void testTooManyItemsException() throws TakeAwayBillException{
+        List<MenuItem> i = new ArrayList<>();
+        for(int count = 0; count < 35; count++) {
+            i.add(new MenuItem(MenuItem.itemType.PANINI, "CHEESEBURGER", 5.00));
+        }
+        BillMaker make = new BillMaker();
+        make.getOrderPrice(i);
+    }
+
 }
