@@ -11,7 +11,7 @@ import org.junit.Test;
 public class BillMakerTest {
 
     @Test
-    public void TestScontoCinquePanini(){
+    public void testScontoCinquePanini(){
         List<MenuItem> i = new ArrayList<>();
         for(int count = 0; count < 5; count++){
             i.add(new MenuItem(MenuItem.itemType.PANINI, "CHEESEBURGER", 5));
@@ -30,7 +30,7 @@ public class BillMakerTest {
     }
 
     @Test
-    public void TestPriceSenzaSconti() {
+    public void testPriceSenzaSconti() {
         List<MenuItem> i = new ArrayList<>();
         for(int count=0; count < 5; count++){
             i.add(new MenuItem(MenuItem.itemType.PANINI, "CHEESEBURGER", 5));
@@ -48,7 +48,7 @@ public class BillMakerTest {
     }
 
     @Test
-    public void TestScontoPaninieFritti() {
+    public void testScontoPaninieFritti() {
         List<MenuItem> i = new ArrayList<>();
         for(int count=0; count < 5; count++){
             i.add(new MenuItem(MenuItem.itemType.FRITTI, "FRITTO MISTO", 10));
@@ -70,13 +70,30 @@ public class BillMakerTest {
     }
 
     @Test(expected = TakeAwayBillException.class)
-    public void testTooManyItemsException() throws TakeAwayBillException{
+    public void testTroppiOrdiniException() throws TakeAwayBillException{
         List<MenuItem> i = new ArrayList<>();
         for(int count = 0; count < 35; count++) {
             i.add(new MenuItem(MenuItem.itemType.PANINI, "CHEESEBURGER", 5.00));
         }
         BillMaker make = new BillMaker();
         make.getOrderPrice(i);
+    }
+
+    @Test
+    public void testMenoDiDieciEuro() {
+        List<MenuItem> i = new ArrayList<>();
+        i.add(new MenuItem(MenuItem.itemType.PANINI, "CHEESEBURGER", 5.00));
+        BillMaker make = new BillMaker();
+
+        double tp = 0;
+
+        try {
+            tp = make.getOrderPrice(i);
+        } catch (TakeAwayBillException error) {
+            System.out.println("Error");
+        }
+
+        assertEquals(tp, 5.50, 1E-100);
     }
 
 }

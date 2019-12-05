@@ -39,6 +39,10 @@ public class BillMaker implements TakeAwayBill {
             totalPrice -= 0.1*totalPrice;
         }
 
+        if(totalPrice < 10.0) {
+            totalPrice += 0.5;
+        }
+
         return totalPrice;
     }
 
