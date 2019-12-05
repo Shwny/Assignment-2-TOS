@@ -15,7 +15,7 @@ public class MenuItemTest {
     @org.junit.Test
     public void testGetName(){
         MenuItem i = new MenuItem(MenuItem.itemType.FRITTI, "CHICKEN NUGGET", 4.00);
-        assertEquals(i.getName(), "CHEESEBURGER");
+        assertEquals(i.getName(), "CHICKEN NUGGET");
     }
 
     @org.junit.Test
