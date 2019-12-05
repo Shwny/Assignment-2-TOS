@@ -11,9 +11,28 @@ import org.junit.Test;
 public class BillMakerTest {
 
     @Test
-    public void TestPrice() {
+    public void TestScontoCinquePanini(){
         List<MenuItem> i = new ArrayList<>();
-        for(int count=0; count < 10; count++){
+        for(int count = 0; count < 5; count++){
+            i.add(new MenuItem(MenuItem.itemType.PANINI, "CHEESEBURGER", 5));
+        }
+
+        i.add(new MenuItem(MenuItem.itemType.PANINI, "PANE E SALAME", 4));
+
+        BillMaker make = new BillMaker();
+        double tp = 0;
+        try {
+            tp = make.getOrderPrice(i);
+        }catch(TakeAwayBillException e){
+            System.out.println("Error");
+        }
+        assertEquals(tp, 27 , 1E-100);
+    }
+
+    @Test
+    public void TestPriceSenzaSconti() {
+        List<MenuItem> i = new ArrayList<>();
+        for(int count=0; count < 5; count++){
             i.add(new MenuItem(MenuItem.itemType.PANINI, "CHEESEBURGER", 5));
         }
 
@@ -25,7 +44,6 @@ public class BillMakerTest {
         } catch (TakeAwayBillException error) {
             System.out.println("Error");
         }
-        assertEquals(tp, 50, 1E-100);
+        assertEquals(tp, 25, 1E-100);
     }
-
 }
