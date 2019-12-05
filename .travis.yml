@@ -11,6 +11,9 @@ jdk: openjdk8
 before_install:
     - cd sandwich-shop-manager
 
+after_success:
+    - mvn jacoco:report coveralls:report
+
 cache:
   directories:
   - $HOME/.m2
